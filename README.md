@@ -20,14 +20,6 @@ Sebuah layanan API RESTful sederhana untuk mengelola daftar tugas (Todo), dileng
 * [Instalasi](#instalasi)
 * [Konfigurasi](#konfigurasi)
 * [Database Migrations & Seeding](#database-migrations--seeding)
-* [Pengujian API (menggunakan Postman)](#pengujian-api-menggunakan-postman)
-    * [1. API Create Todo List](#1-api-create-todo-list)
-    * [2. API Get Todo List to Generate Excel Report](#2-api-get-todo-list-to-generate-excel-report)
-    * [3. API Get Todo List to Provide Chart Data](#3-api-get-todo-list-to-provide-chart-data)
-* [Struktur Proyek](#struktur-proyek)
-* [Tentang Laravel](#tentang-laravel)
-* [Catatan Tambahan](#catatan-tambahan)
-* [Lisensi](#lisensi)
 
 ---
 
