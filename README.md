@@ -69,7 +69,7 @@ Ikuti langkah-langkah di bawah ini untuk menjalankan proyek secara lokal:
 
 1.  **Clone repositori:**
     ```bash
-    git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
+    git clone https://github.com/Rinaldiputra08/talenavi-todo-api.git
     cd your-repo-name
     ```
     (Ganti `your-username/your-repo-name` dengan username dan nama repositori GitHub Anda)
@@ -109,3 +109,5 @@ DB_USERNAME=root             # Ganti dengan username database Anda
 DB_PASSWORD=                 # Ganti dengan password database Anda
 
 # ... (bagian lain dari .env bisa tetap standar)
+
+
