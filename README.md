@@ -71,12 +71,15 @@ Ikuti langkah-langkah di bawah ini untuk menjalankan proyek secara lokal:
     composer install
     ```
 
-3.  **Buat file `.env`:**
+3.  **Atur file `.env`:**
+    Jika sudah ada file .env.example bawaan ketika clone project maka anda hanya perlu rename file tersebut menjadi .env jika tidak ada maka bisa jalankan:
+
     ```bash
     cp .env.example .env
     ```
+    Jika sudah ada file 
 
-4.  **Buat application key:**
+5.  **Buat application key:**
     ```bash
     php artisan key:generate
     ```
@@ -91,6 +94,7 @@ APP_NAME="Talenavi Todo API"
 APP_ENV=local
 APP_DEBUG=true
 APP_URL=http://localhost
+APP_TIMEZONE=Asia/Jakarta
 
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
