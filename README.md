@@ -72,7 +72,7 @@ Ikuti langkah-langkah di bawah ini untuk menjalankan proyek secara lokal:
     ```
 
 3.  **Atur file `.env`:**
-    Jika sudah ada file .env.example bawaan ketika clone project maka anda hanya perlu rename file tersebut menjadi .env jika tidak ada maka bisa jalankan:
+    Jika sudah ada file `.env.example` bawaan ketika clone project maka anda hanya perlu rename file tersebut menjadi `.env` jika tidak ada maka bisa jalankan:
 
     ```bash
     cp .env.example .env
