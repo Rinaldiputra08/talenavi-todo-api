@@ -90,6 +90,18 @@ Ikuti langkah-langkah di bawah ini untuk menjalankan proyek secara lokal:
     ```
 
 ---
+## Database Migrations & Seeding
+
+1. **Jalankan migrasi database:**
+    ```bash
+    php artisan migrate
+    ```
+    Catatan: Secara default, file routes/api.php tidak ada di instalasi Laravel 11/12 yang baru. Untuk mengaktifkan routing API dan Laravel Sanctum (opsional, namun direkomendasikan       untuk API), pastikan Anda telah menjalankan:
+
+    ```bash
+   php artisan install:api
+    ```
+---
 
 ## Konfigurasi
 
@@ -110,14 +122,4 @@ DB_PASSWORD=                 # Ganti dengan password database Anda
 
 # ... (bagian lain dari .env bisa tetap standar)
 ---
-## Database Migrations & Seeding
 
-1. **Jalankan migrasi database:**
-    ```bash
-    php artisan migrate
-    ```
-    Catatan: Secara default, file routes/api.php tidak ada di instalasi Laravel 11/12 yang baru. Untuk mengaktifkan routing API dan Laravel Sanctum (opsional, namun direkomendasikan       untuk API), pastikan Anda telah menjalankan:
-
-    ```bash
-   php artisan install:api
-    ```
