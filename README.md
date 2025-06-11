@@ -64,7 +64,6 @@ Ikuti langkah-langkah di bawah ini untuk menjalankan proyek secara lokal:
     git clone https://github.com/Rinaldiputra08/talenavi-todo-api.git
     cd your-repo-name
     ```
-    (Ganti `your-username/your-repo-name` dengan username dan nama repositori GitHub Anda)
 
 2.  **Instal dependensi Composer:**
     ```bash
