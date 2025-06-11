@@ -7,55 +7,105 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel hahay
+# Talenavi Todo API Service
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Sebuah layanan API RESTful sederhana untuk mengelola daftar tugas (Todo), dilengkapi dengan fitur pelaporan Excel dan data agregat untuk kebutuhan chart. Proyek ini dibangun menggunakan **Laravel Framework 12.18.0** dan PHP 8.2+.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Table of Contents
 
-## Learning Laravel
+* [Fitur](#fitur)
+* [Persyaratan Sistem](#persyaratan-sistem)
+* [Instalasi](#instalasi)
+* [Konfigurasi](#konfigurasi)
+* [Database Migrations & Seeding](#database-migrations--seeding)
+* [Pengujian API (menggunakan Postman)](#pengujian-api-menggunakan-postman)
+    * [1. API Create Todo List](#1-api-create-todo-list)
+    * [2. API Get Todo List to Generate Excel Report](#2-api-get-todo-list-to-generate-excel-report)
+    * [3. API Get Todo List to Provide Chart Data](#3-api-get-todo-list-to-provide-chart-data)
+* [Struktur Proyek](#struktur-proyek)
+* [Tentang Laravel](#tentang-laravel)
+* [Catatan Tambahan](#catatan-tambahan)
+* [Lisensi](#lisensi)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Fitur
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Proyek ini mengimplementasikan tiga endpoint API utama sesuai dengan requirements:
 
-## Laravel Sponsors
+* **API Create Todo List:**
+    * Membuat entri Todo baru dengan validasi input yang ketat (judul, tanggal jatuh tempo, status, prioritas, dll.).
+    * Mendukung field opsional (`assignee`) dan default values (`time_tracked`, `status`).
+* **API Get Todo List to Generate Excel Report:**
+    * Menghasilkan file Excel (.xlsx) dari data Todo.
+    * Kolom laporan: `Title`, `Assignee`, `Due Date`, `Time Tracked`, `Status`, `Priority`.
+    * Dilengkapi dengan baris ringkasan di bagian bawah (Total Todo, Total Waktu Terlacak) dari data yang difilter.
+    * Mendukung filtering komprehensif berdasarkan semua field (partial match, multiple values, rentang tanggal/numerik).
+* **API Get Todo List to Provide Chart Data:**
+    * Menyediakan data agregat dalam format JSON untuk kebutuhan chart/grafik.
+    * Mendukung tiga jenis ringkasan:
+        * **Status Summary:** Jumlah Todo per status (`pending`, `open`, `in_progress`, `completed`).
+        * **Priority Summary:** Jumlah Todo per prioritas (`low`, `medium`, `high`).
+        * **Assignee Summary:** Detail Todo per assignee (total Todo, total pending Todo, total waktu terlacak untuk Todo yang selesai).
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## Persyaratan Sistem
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+Pastikan sistem Anda memenuhi persyaratan berikut untuk menjalankan aplikasi:
 
-## Contributing
+* PHP >= 8.2
+* Composer
+* MySQL (atau database lain yang didukung Laravel, seperti PostgreSQL, SQLite)
+* Postman (untuk pengujian API)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+## Instalasi
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Ikuti langkah-langkah di bawah ini untuk menjalankan proyek secara lokal:
 
-## Security Vulnerabilities
+1.  **Clone repositori:**
+    ```bash
+    git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
+    cd your-repo-name
+    ```
+    (Ganti `your-username/your-repo-name` dengan username dan nama repositori GitHub Anda)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+2.  **Instal dependensi Composer:**
+    ```bash
+    composer install
+    ```
 
-## License
+3.  **Buat file `.env`:**
+    ```bash
+    cp .env.example .env
+    ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+4.  **Buat application key:**
+    ```bash
+    php artisan key:generate
+    ```
+
+---
+
+## Konfigurasi
+
+Edit file `.env` Anda dan sesuaikan koneksi database Anda:
+
+```dotenv
+APP_NAME="Talenavi Todo API"
+APP_ENV=local
+APP_DEBUG=true
+APP_URL=http://localhost
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=talenavi_todo_db # Ganti dengan nama database Anda
+DB_USERNAME=root             # Ganti dengan username database Anda
+DB_PASSWORD=                 # Ganti dengan password database Anda
+
+# ... (bagian lain dari .env bisa tetap standar)
