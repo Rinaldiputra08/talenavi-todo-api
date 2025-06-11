@@ -109,7 +109,7 @@ DB_USERNAME=root             # Ganti dengan username database Anda
 DB_PASSWORD=                 # Ganti dengan password database Anda
 
 # ... (bagian lain dari .env bisa tetap standar)
-
+---
 ## Database Migrations & Seeding
 
 1. **Jalankan migrasi database:**
