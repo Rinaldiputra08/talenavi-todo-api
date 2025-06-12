@@ -9,7 +9,7 @@
 
 # Talenavi Todo API Service
 
-Sebuah layanan API RESTful sederhana untuk mengelola daftar tugas (Todo), dilengkapi dengan fitur pelaporan Excel dan data agregat untuk kebutuhan chart. Proyek ini dibangun menggunakan **Laravel Framework 12.18.0** dan PHP 8.2+.
+Proyek ini dibangun menggunakan **Laravel Framework 12.18.0** dan PHP 8.3.14.
 
 ---
 
