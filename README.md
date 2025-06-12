@@ -95,7 +95,7 @@ APP_DEBUG=true
 APP_URL=http://localhost
 APP_TIMEZONE=Asia/Jakarta
 
-DB_CONNECTION=mysql
+DB_CONNECTION=mysql           # Sesuaikan dengan database anda
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=talenavi_todo_db # Ganti dengan nama database Anda
